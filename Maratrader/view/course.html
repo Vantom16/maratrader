@@ -1,0 +1,47 @@
+ <div class="container">
+       <div class="row row content" ng-controller="CourseController">
+           <div class="col-xs.12">
+               <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"
+              type="button">
+            {{showDetails? 'Hide Details':'Show Details'}}
+              </button>
+               <ul class="nav nav-tabs" role="tablist">
+                   <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                       <a ng-click="select(1)"
+                          aria-controls="all course"
+                          role="tab">The Course</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                       <a ng-click="select(2)"
+                          aria-controls="basic course"
+                          role="tab">Basic Course</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                       <a ng-click="select(3)"
+                          aria-controls="advanced course"
+                          role="tab">Advanced Course</a></li>
+               </ul>
+               <div class="tab-content">
+                   <ul class="media-list tab-pane fade in active">
+                    <li class="media" ng-repeat="chapter in chapters 
+        | filter:filtText">
+            <div class="media-body">
+                <p style="padding:20px;"></p>
+                <h3 class="media-heading">{{chapter.name}}
+                <span class="label label-danger label-xs">{{chapter.label}}</span></h3>
+                <p ng-show="showDetails">{{chapter.description}}</p>
+               </div>
+               <div class="media-center media-middle">
+                    <a href="#/course/{{chapter._id}}">
+                    <img class="media-object img-thumbnail"
+                    ng-src={{chapter.image}} alt="">
+                    </a>
+               </div>
+             </li>
+            </ul>
+           </div>
+        </div>
+       </div>
+    </div>    
+ 
